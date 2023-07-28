@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TaskModel } from '../providers/to_do.state';
+import { actions } from '../providers/to_do.actions';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-to-do-item',
   templateUrl: './to-do-item.component.html',
@@ -8,10 +10,10 @@ import { TaskModel } from '../providers/to_do.state';
 export class ToDoItemComponent implements OnInit {
   @Input() task?:TaskModel;
   editTask: boolean = false;
-  constructor(){}
+  constructor( private store:Store){}
   
     ngOnInit(): void {
-      console.log("task"+this.task!.id)
+    console.log("task"+this.task!.id)
       this.editTask= this.task!.completed;
       
   }
@@ -22,6 +24,10 @@ export class ToDoItemComponent implements OnInit {
   
   }
   deleteTask(){
-  
-  }
+    this.store.dispatch(actions.deleteTaskAction({
+      id:this.task!.id,
+      completed:this.task!.completed,
+      title:this.task!.title,
+    }))
+    }
 }
