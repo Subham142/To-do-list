@@ -1,4 +1,8 @@
 <div>
+  <button type="button" (click)="sortPriorityAse()">Sort Priority Asc</button>
+  <button type="button" (click)="sortPriorityDsc()">Sort Priority DSC</button>
+  <button type="button" (click)="sortStatusAse()">Sort Status Asc</button>
+  <button type="button" (click)="sortStatusDsc()">Sort Priority DSC</button>
   <h1 *ngIf="tasks.length <= 0">No Tasks!</h1>
   <div *ngFor="let task of tasks">
     <app-to-do-item [task]="task"></app-to-do-item>
