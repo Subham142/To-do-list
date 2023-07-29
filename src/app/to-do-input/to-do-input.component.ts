@@ -18,25 +18,13 @@ export class ToDoInputComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(taskSelector).subscribe((state) => (this.tasks = state));
   }
-
-
-  // addTask() {
-  //   if (this.taskInput != '' || this.taskInput != null)
-  //     this.store.dispatch(
-  //       actions.addTaskAction({
-  //         id: this.tasks!.length + 1,
-  //         completed: false,
-  //         title: this.taskInput!,
-  //       })
-  //     );
-  //   this.taskInput = '';
-  // }
-
   onSubmit(form : NgForm){
     console.log(form);
+    //     let item_id = this.tasks!.length+1 | 1;
+    // localStorage.setItem('item_id',JSON.stringify(form));
     this.store.dispatch(actions.addTaskAction(
     {
-   id:this.tasks!.length+1,
+      id:this.tasks!.length+1,
       completed:false,
       title: form.controls['task-title'].value,
       description:form.controls['task-desc'].value,
@@ -45,6 +33,7 @@ export class ToDoInputComponent implements OnInit {
       status:1,
       takenBy:""
     }));
+
     form.reset() 
   }
 }
