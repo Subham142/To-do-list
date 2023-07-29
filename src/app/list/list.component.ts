@@ -43,6 +43,13 @@ export class ListComponent implements OnInit {
     new ngxCsv(this.tasks, 'report', options);
   }
 
+  sortByDate() {
+    this.tasks = this.tasks
+      .slice()
+      .sort(
+        (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+      );
+  }
   sortPriorityAse() {
     this.tasks = this.tasks.slice().sort((a, b) => a.priority - b.priority);
   }
