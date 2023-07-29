@@ -3,4 +3,6 @@
   <div *ngFor="let task of tasks">
     <app-to-do-item [task]="task"></app-to-do-item>
   </div>
+
+  <button type="button" (click)="downloadCsv()">Download CSV</button>
 </div>
