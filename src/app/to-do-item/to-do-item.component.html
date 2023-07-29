@@ -1,4 +1,4 @@
-<!-- <table>
+<table>
     <thead>
       <tr>
         <td>Slno.</td>
@@ -39,69 +39,4 @@
       </tr>
      
       </tbody>
-  </table> -->
-
-  <div class="view-container">
-    <form (ngSubmit)="updateTask(editForm)" #editForm="ngForm">
-      <div class="form-group">
-        <!-- <div>{{task!.id}}</div> -->
-        <div>{{task!.id}}</div>
-        <div>
-          <input *ngIf="!editTask; else elseTitleBlock;" value="{{task?.title}}" [disabled]="!editTask">
-          <ng-template #elseTitleBlock> 
-            <input placeholder="{{task?.title}}" class="form-control" id="edit-task-title" ngModel
-              name="edit-task-title">
-          </ng-template>
-        </div>
-        <div>
-          <input *ngIf="!editTask; else elseDescriptionBlock;" value="{{task?.description}}" [disabled]="!editTask">
-  
-          <ng-template #elseDescriptionBlock>
-            <input placeholder="{{task?.description}}" ngModel name="edit-task-description">
-          </ng-template>
-        </div>
-        <div>
-          <input type="date" *ngIf="!editTask; else elsedueDateBlock;" value="{{task?.dueDate}}" [disabled]="!editTask" name="edit-task-dueDate">
-  
-          <ng-template #elsedueDateBlock>
-            <input type="date" placeholder="{{task?.dueDate}}" ngModel name="edit-task-dueDate">
-          </ng-template>
-        </div>
-        <div>
-          <select class="form-control" id="edit-task-priority" value={{task?.priority}} [disabled]="!editTask">
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
-          </select>
-        </div>
-        <div>
-          <input *ngIf="!editTask; else elseTakenByBlock;" value="{{task?.takenBy}}" [disabled]="!editTask">
-  
-          <ng-template #elseTakenByBlock>
-            <input placeholder="{{task?.takenBy}}" ngModel name="edit-task-takenBy">
-          </ng-template>
-        </div>
-  
-        <div>
-         
-         
-          <select class="form-control" id="task-status" name="edit-task-status" value="{{task?.status}}" >
-            <option value="1" class="low">to-do</option>
-            <option value="2">in-progress</option>
-            <option value="3">completed</option>
-          </select>
-        
-        </div>
-        <div>
-          <button *ngIf="!editTask; else elseBlock;" (click)="updateToggle()">Edit</button>
-  
-          <ng-template #elseBlock>
-            <button (click)="updateTask(editForm)">update</button>
-          </ng-template>
-        </div>
-        <div>
-          <button (click)="deleteTask()">Delete</button>
-        </div>
-      </div>
-    </form>
-  </div>
+  </table>

@@ -8,7 +8,6 @@ import { ListComponent } from './list/list.component';
 import { ToDoInputComponent } from './to-do-input/to-do-input.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     StoreModule.forRoot({
       "tasks":taskReducer,
-    }),
-    BrowserAnimationsModule
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

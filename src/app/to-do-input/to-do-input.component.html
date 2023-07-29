@@ -1,35 +1,51 @@
-<div class ="container">
+
+<div class="container">
   <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
-      <h4 >Add New Task</h4>
-      <div class="form-group">
-        <div class="first-section">
-        <label for="task-title">Title </label>
-        <input type="text" class="form-control" id="task-title" ngModel name="task-title" required>
-      </div>
-      <div>
-        <label for="task-desc">Description</label>
-        <textarea rows="4" cols="50" type="text" class="form-control" id="task-desc" ngModel name="task-desc" required>
-          </textarea>
-      </div>
-
-        <div>
-          <label for="task-date">Due Date </label>
-          <input type="date" class="form-control" id="task-date" ngModel name="task-date" required>
-         </div>
-         <div>
-          <label for="task-priority">Priority</label>
-          <select class="form-control" id="task-priority"ngModel name="task-priority" required>
-            <option value="1" class="low" style="background-color: green;color:aliceblue;"> 
-              Low
-            </option>
-            <option value="2"  style="background-color: rgb(255, 118, 6);color:aliceblue;">Medium</option>
-            <option value="3"  style="background-color: rgb(233, 9, 9);color:aliceblue;">High</option>
-          </select>
-        </div>
-      </div>
-        
-
-  
-<button type="submit" class="btn" [disabled]="myForm.invalid">Add</button>
-    </form>
+    <h4> Create Your Actitvity</h4>
+    <div class="form-group">
+      <label for="task-title">Title </label>
+      <input
+        type="task-title"
+        class="form-control"
+        id="task-title"
+        ngModel
+        name="task-title"
+        required
+      />
+      <label for="task-desc">description of the task </label>
+      <input
+        type="task-desc"
+        class="form-control"
+        id="task-desc"
+        ngModel
+        name="task-desc"
+        required 
+      />
+      <label for="task-date">due date </label>
+      <input
+        type="date"
+        class="form-control"
+        id="task-date"
+        ngModel
+        name="task-date"
+        required
+      />
+      <label for="task-priority">Priority</label>
+      <select
+        class="form-control"
+        id="task-priority"
+        ngModel
+        name="task-priority"
+        required
+      >
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+      </select>
+    </div>
+    <small id="errorMessage" *ngIf="myForm.invalid && myForm.dirty"
+      >invalid/empty field</small
+    >
+    <button type="submit" class="btn" [disabled]="myForm.invalid">Add</button>
+  </form>
 </div>
