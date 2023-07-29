@@ -5,29 +5,33 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-to-do-item',
   templateUrl: './to-do-item.component.html',
-  styleUrls: ['./to-do-item.component.css']
+  styleUrls: ['./to-do-item.component.css'],
 })
 export class ToDoItemComponent implements OnInit {
-  @Input() task?:TaskModel;
+  @Input() task?: TaskModel;
   editTask: boolean = false;
-  constructor( private store:Store){}
-  
-    ngOnInit(): void {
-    console.log("task"+this.task!.id)
-      this.editTask= this.task!.completed;
-      
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    console.log('task' + this.task!.id);
+    this.editTask = this.task!.completed;
   }
-  updateToggle(){
-    this.editTask=!this.editTask;
+  updateToggle() {
+    this.editTask = !this.editTask;
   }
-  updateTask(){
-  
+  updateTask() {}
+  deleteTask() {
+    this.store.dispatch(
+      actions.deleteTaskAction({
+        id: this.task!.id,
+        completed: this.task!.completed,
+        title: this.task!.title,
+        description: this.task!.description,
+        dueDate: this.task!.dueDate,
+        priority: this.task!.priority,
+        status: this.task!.status,
+        takenBy: this.task!.takenBy,
+      })
+    );
   }
-  deleteTask(){
-    this.store.dispatch(actions.deleteTaskAction({
-      id:this.task!.id,
-      completed:this.task!.completed,
-      title:this.task!.title,
-    }))
-    }
 }

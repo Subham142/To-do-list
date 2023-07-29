@@ -7,16 +7,18 @@ import { StoreModule } from '@ngrx/store';
 import { ListComponent } from './list/list.component';
 import { ToDoInputComponent } from './to-do-input/to-do-input.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     ToDoInputComponent,
-    ToDoItemComponent
+    ToDoItemComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     StoreModule.forRoot({
       "tasks":taskReducer,

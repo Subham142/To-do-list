@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div>
         <p>  {{task!.id}}</p>
         <span>{{task!.title}}</span>
@@ -8,4 +8,38 @@
         <button >Edit</button>
         <button (click)="deleteTask()">delete</button>
     </div>
-</div>
+</div> -->
+
+<table>
+    <thead>
+      <tr>
+        <td>Slno.</td>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Deadline</td>
+        <td>Prority</td>
+        <td>Task Taken by</td>
+        <td>Status</td>    
+        <td>Edit</td>
+        <td>Delete</td>
+        </tr>
+    </thead>
+
+      <tr>
+        <td>{{task!.id}}</td>
+        <td>{{task!.id}}</td>
+     <td>{{task!.title}}</td>
+     <td>{{task!.description}}</td>
+     <td>{{task!.dueDate}}</td>
+     <td>{{task!.priority}}</td>
+     <td>{{task!.takenBy}}</td>
+     <td>{{task!.status}}</td>
+    
+
+     <td><button>Edit</button></td>
+     <td><button (click)="deleteTask()">Delete</button></td>
+      </tr>
+     
+
+  </table>
