@@ -13,14 +13,23 @@
         <td>Delete</td>
         </tr>
     </thead>
-
+    <tbody>
       <tr>
         <td>{{task!.id}}</td>
         <td>{{task!.id}}</td>
      <td>{{task!.title}}</td>
      <td>{{task!.description}}</td>
      <td>{{task!.dueDate}}</td>
-     <td>{{task!.priority}}</td>
+     <ng-template [ngIf]="task!.priority==1">
+        <td class="low">low</td>  
+      </ng-template>
+    
+      <ng-template [ngIf]="task!.priority==2">
+        <td class="medium"> medium</td> 
+      </ng-template>
+      <ng-template [ngIf]="task!.priority ==3">
+        <td class="high">high</td>
+      </ng-template>
      <td>{{task!.takenBy}}</td>
      <td>{{task!.status}}</td>
     
@@ -29,5 +38,5 @@
      <td><button (click)="deleteTask()">Delete</button></td>
       </tr>
      
-
+      </tbody>
   </table>
