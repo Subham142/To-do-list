@@ -1,6 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { TaskModel } from '../providers/to_do.state';
+import { To_Do_Model } from '../providers/to_do.state';
 import { taskSelector } from '../providers/to_do.reducers';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { actions } from '../providers/to_do.actions';
@@ -11,15 +11,16 @@ import { actions } from '../providers/to_do.actions';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() task?: TaskModel;
+  // @Input() task?: To_Do_Model;
   editTask: boolean = false;
-  tasks: TaskModel[] = [];
+  tasks: To_Do_Model[] = [];
   constructor(private store: Store) {}
+  
   ngOnInit(): void {
-    this.loadTask();
-    this.editTask = this.task!.completed;
+    this.loadTo_dos();
+    // this.editTask = this.task!.completed;
   }
-  loadTask() {
+  loadTo_dos() {
     this.store.select(taskSelector).subscribe((state) => (this.tasks = state));
   }
 
@@ -47,27 +48,30 @@ export class ListComponent implements OnInit {
     new ngxCsv(this.tasks, 'report', options);
   }
 
-  sortByDate() {
+  sort_By_Date() {
     this.tasks = this.tasks
       .slice()
       .sort(
         (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
       );
   }
-  sortPriorityAse() {
+  sort_Priority_Ase() {
     this.tasks = this.tasks.slice().sort((a, b) => a.priority - b.priority);
   }
-  sortPriorityDsc() {
+  sort_Priority_Dsc() {
     this.tasks = this.tasks.slice().sort((a, b) => b.priority - a.priority);
   }
-  sortStatusAse() {
+  sort_Status_Ase() {
     this.tasks = this.tasks.slice().sort((a, b) => a.status - b.status);
   }
-  sortStatusDsc() {
+  sort_Status_Dsc() {
     this.tasks = this.tasks.slice().sort((a, b) => b.status - a.status);
   }
-  deleteTask(del_task : TaskModel) {
-    if(del_task!.id === undefined) {return}
+
+  deleteTask(del_task: To_Do_Model) {
+    if (del_task!.id === undefined) {
+      return;
+    }
     this.store.dispatch(
       actions.deleteTaskAction({
         id: del_task!.id,

@@ -1,50 +1,79 @@
-<div>
-  <button mat-raised-button color="primary" (click)="sortPriorityAse()">Sort Priority Asc</button>
-  <button type="button" (click)="sortPriorityDsc()">Sort Priority DSC</button>
-  <button type="button" (click)="sortStatusAse()">Sort Status Asc</button>
-  <button type="button" (click)="sortStatusDsc()">Sort Priority DSC</button>
-  <button type="button" (click)="sortByDate()">Sort by date</button>
+<div class="list">
+  <div class="btn1">
+    <button class="sort-btn" (click)="sort_Priority_Ase()">
+      Sort Priority Asc ☝🏾
+    </button>
+    <button class="sort-btn" (click)="sort_Priority_Dsc()">
+      Sort Priority DSC 👇🏾
+    </button>
+    <button class="sort-btn" (click)="sort_Status_Ase()">
+      Sort Status Asc ☝🏾
+    </button>
+    <button class="sort-btn" (click)="sort_Status_Dsc()">
+      Sort Status DSC 👇🏾
+    </button>
+    <button class="sort-btn" (click)="sort_By_Date()">Sort by date 📅</button>
+  </div>
   <h1 *ngIf="tasks.length <= 0">No Tasks!</h1>
-  <table  class="table">
-    <thead>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
-        <td scope="col">Slno.</td>
-        <td scope="col">ID</td>
-        <td scope="col">Title</td>
-        <td scope="col">Description</td>
-        <td scope="col">Deadline</td>
-        <td scope="col">Prority</td>
-        <td scope="col">Task Taken by</td>
-        <td scope="col">Status</td>    
-        <td scope="col">Delete</td>
-        </tr>
+        <th scope="col">Slno.</th>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Prority</th>
+        <th scope="col">Task Taken by</th>
+        <th scope="col">Status</th>
+        <th scope="col">Delete</th>
+      </tr>
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks">
-        <td>{{task!.id}}</td>
-        <td>{{task!.id}}</td>
-     <td>{{task!.title}}</td>
-     <td>{{task!.description}}</td>
-     <td>{{task!.dueDate}}</td>
-     <ng-template [ngIf]="task!.priority==1">
-        <td class="low">low</td>  
-      </ng-template>
-    
-      <ng-template [ngIf]="task!.priority==2">
-        <td class="medium"> medium</td> 
-      </ng-template>
-      <ng-template [ngIf]="task!.priority ==3">
-        <td class="high">high</td>
-      </ng-template>
-     <td>{{task!.takenBy}}</td>
-     <td>{{task!.status}}</td>
-    
+        <th>{{ task!.id }}</th>
+        <td>{{ task!.id }}</td>
+        <td>{{ task!.title }}</td>
+        <td>{{ task!.description }}</td>
+        <td>{{ task!.dueDate }}</td>
+        <ng-template [ngIf]="task!.priority == 1">
+          <td class="low" style="background-color: green">low</td>
+        </ng-template>
 
-     <td><button (click)="deleteTask(task)">Delete</button></td>
-      </tr>  
-     
+        <ng-template [ngIf]="task!.priority == 2">
+          <td class="medium" style="background-color: yellow">medium</td>
+        </ng-template>
+        <ng-template [ngIf]="task!.priority == 3">
+          <td class="high" style="background-color: red">high</td>
+        </ng-template>
+        <td>{{ task!.takenBy }}</td>
+        <ng-template [ngIf]="task?.status == 1 ">
+          <div  style="background-color: rgb(224, 74, 74)">
+            to-do
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="task?.status == 2">
+          <div  style="background-color: rgb(56, 85, 202)">
+            in-progress
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="task?.status == 3">
+          <div style="background-color: rgb(48, 198, 48)">
+            completed
+          </div>
+        </ng-template>
+
+        <td><button (click)="deleteTask(task)">🗑️</button></td>
+      </tr>
     </tbody>
   </table>
 
-  <button type="button" (click)="downloadCsv()">Download CSV</button>
+  <button
+    class="download"
+    mat-raised-button
+    color="warn"
+    (click)="downloadCsv()"
+  >
+    🖹 Download CSV 📩
+  </button>
 </div>

@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { TaskModel } from './to_do.state';
+import { To_Do_Model } from './to_do.state';
 
-const addTaskAction = createAction('[TASK] ADD_TASK', props<TaskModel>());
-const updateTaskAction = createAction('[TASK] UPDATE_TASK', props<TaskModel>());
-const deleteTaskAction = createAction('[TASK] DELETE_TASK', props<TaskModel>());
-const sortTaskAction = createAction('[TASK] SORT_TASK', props<TaskModel>());
+const addTaskAction = createAction('ADD_TO_DO', props<To_Do_Model>());
+const updateTaskAction = createAction('UPDATE_TO_DO', props<To_Do_Model>());
+const deleteTaskAction = createAction('DELETE_TO_DO', props<To_Do_Model>());
+const sortTaskAction = createAction('SORT_TO_DO', props<To_Do_Model>());
 
 
 export const actions = {

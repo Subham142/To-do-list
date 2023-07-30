@@ -4,7 +4,7 @@ import {
   createSelector,
   on,
 } from '@ngrx/store';
-import { TaskModel, tasks } from './to_do.state';
+import { To_Do_Model, tasks } from './to_do.state';
 import { actions } from './to_do.actions';
 
 export const taskReducer = createReducer(
@@ -28,5 +28,5 @@ export const taskReducer = createReducer(
 
 export const taskSelector = createSelector(
   createFeatureSelector('tasks'),
-  (tasks: TaskModel[]) => tasks
+  (tasks: To_Do_Model[]) => tasks
 );

@@ -1,7 +1,7 @@
 
 <div class="container">
   <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
-    <h4 class="header"> Create Your Actitvity</h4>
+    <h4 class="header"> Create Your Actitvity 🏃</h4>
     <div class="form-group">
       <label for="task-title">Title </label>
       <input
@@ -21,7 +21,7 @@
         name="task-desc"
         required 
       />
-      <label for="task-date">due date </label>
+      <label for="task-date">Due date </label>
       <input
         type="date"
         class="form-control"
@@ -43,9 +43,8 @@
         <option value="3">High</option>
       </select>
     </div>
-    <small id="errorMessage" *ngIf="myForm.invalid && myForm.dirty"
-      >invalid/empty field</small
-    >
-    <button type="submit" class="btn" [disabled]="myForm.invalid">Add</button>
+    <p><small id="errorMessage" *ngIf="myForm.invalid && myForm.dirty"
+      >invalid/empty field</small></p>
+    <button  type="submit" class="btn" [disabled]="myForm.invalid">Add</button>
   </form>
 </div>
